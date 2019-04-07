@@ -1,10 +1,10 @@
 var branch = $("#branch-data").attr('data');
 var commitURL = "https://api.github.com/repos/betamax2021/Muximux2/commits?sha=" + branch;
 var localversion = $("#sha-data").attr('data');
-//var cwd = $("#cwd-data").attr('data');
-//var phpini = $("#phpini-data").attr('data');
-//var gitdir = $("#gitdirectory-data").attr('data');
-//var title = $("#title-data").attr('data');
+var cwd = $("#cwd-data").attr('data');
+var phpini = $("#phpini-data").attr('data');
+var gitdir = $("#gitdirectory-data").attr('data');
+var title = $("#title-data").attr('data');
 var secret = $("#secret").attr('data');
 var jsonString;
 var difference = 0;
@@ -272,6 +272,7 @@ function viewChangelog() {
                 difference = i;
             }
         }
+		
         differenceDays = datediff(json[0].commit.author.date.substring(0, 10));
 
 
@@ -279,7 +280,12 @@ function viewChangelog() {
     if (difference > 0) {
         status = "<strong>" + difference + " commits behind!</strong>";
     }
-    output = "<p>Your install is currently " + status + "<br/>";
+	
+	var latestcommit = json[0].sha.substr(0, 7);
+	var currentcommit = json[difference].sha.substr(0, 7);
+	
+    output = "<p>Your install is currently " + status + "<br/>" + "</ br> Newest Commit: " + latestcommit + "</ br> Current Commit: " + currentcommit;
+	
     if (difference > 0) {
         output += "The changes from your version to the latest version can be read <a href=\"" + compareURL + "\" target=\"_blank\">here</a>.</p>";
     }

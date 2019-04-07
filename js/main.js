@@ -1,4 +1,4 @@
-var boxshadowprop, branch, tabColor, isMobile, overrideMobile, hasDrawer, color, themeColor, tabs, activeTitle, splashNavBtnColor, rss, rssUrl;
+var boxshadowprop, branch, tabColor, isMobile, overrideMobile, hasDrawer, color, themeColor, tabs, activeTitle, splashNavBtnColor;
 jQuery(document).ready(function($) {
 	$('#pleaseWaitDialog').animate({
 		opacity: .25,
