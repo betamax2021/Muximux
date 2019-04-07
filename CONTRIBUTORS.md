@@ -1,5 +1,6 @@
 Muximux contributors (either directly or indirectly)
 ============================================
+* **[betamax2021](https://github.com/betamax2021)**
 
 * **[mescon](https://github.com/mescon)**
 

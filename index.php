@@ -56,7 +56,7 @@ defined("CONFIG") ? null : define('CONFIG', 'settings.ini.php');
         </div>
     </div>
     <div class="loader-header">
-        <h4>Muximux is loading...</h4>
+        <h4>Muximux2 is loading...</h4>
     </div>
     <div class="loader-body">
         <div class="loader">
@@ -224,7 +224,7 @@ defined("CONFIG") ? null : define('CONFIG', 'settings.ini.php');
                                target="_blank">https://chrome.google.com/webstore/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe</a>
                         </p>
 
-                        <p>See <a href="https://github.com/mescon/Muximux/" target="_blank">https://github.com/mescon/Muximux/</a>
+                        <p>See <a href="https://github.com/betamax2021/Muximux2/" target="_blank">https://github.com/betamax2021/Muximux2/</a>
                             for more information.</p>
 
                     </div>
@@ -281,7 +281,7 @@ defined("CONFIG") ? null : define('CONFIG', 'settings.ini.php');
             <div class="modal-content logContent" role="document">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <div class="modal-title"><h1>Muximux Log</h1></div>
+                    <div class="modal-title"><h1>Muximux2 Log</h1></div>
                 </div>
                 <div class="modal-body logBody">
                     <div id="logContainer">

@@ -1,6 +1,6 @@
-# Muximux - Lightweight portal to your webapps
+# Muximux2 - Lightweight portal to your webapps Under new Managment ;)
 
-[![Join the chat at https://gitter.im/mescon/Muximux](https://badges.gitter.im/mescon/Muximux.svg)](https://gitter.im/mescon/Muximux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Docker Automated buil](https://img.shields.io/docker/automated/linuxserver/docker-muximux.svg)](https://hub.docker.com/r/linuxserver/muximux/) [![GitHub stars](https://img.shields.io/github/stars/mescon/Muximux.svg)](https://github.com/mescon/Muximux/stargazers) [![GitHub forks](https://img.shields.io/github/forks/mescon/Muximux.svg)](https://github.com/mescon/Muximux/network)
+[![GitHub stars](https://img.shields.io/github/stars/betamax2021/Muximux2.svg)](https://github.com/betamax2021/Muximux2/stargazers) [![GitHub forks](https://img.shields.io/github/forks/betamax2021/Muximux2.svg)](https://github.com/betamax2021/Muximux2/network)
 
 This is a lightweight portal to view & manage your webapps without having to run anything more than a PHP enabled webserver.
 With Muximux you don't need to keep multiple tabs open, or bookmark the URL to all of your apps.
@@ -29,7 +29,7 @@ With Muximux you don't need to keep multiple tabs open, or bookmark the URL to a
 `` parse_ini_file `` must be allowed in php.ini (default is allowed!)
 
 - To set it up, clone this repository:
-`` git clone https://github.com/mescon/Muximux `` or [download the ZIP-file](https://github.com/mescon/Muximux/archive/master.zip). If you install by downloading the zip-file, Muximux will still be able to notify you of updates and install them for you (given the right directory permissions!)
+`` git clone https://github.com/betamax2021/Muximux2 `` or [download the ZIP-file](https://github.com/betamax2021/Muximux2/archive/master.zip). If you install by downloading the zip-file, Muximux will still be able to notify you of updates and install them for you (given the right directory permissions!)
 
 - Place all files on a publicly accessible webserver, either in a subdirectory called (for example) ``muximux`` or directly in the root directory of your webserver (such as ``/var/www``, ``/var/html``, ``C:\Inetpub\wwwroot`` or wherever your webserver serves files from by default).
 

@@ -277,7 +277,7 @@ jQuery(document).ready(function($) {
     }
     
     $('#settingsLogo').click(function(){
-        window.open('https://github.com/mescon/Muximux', '_blank');
+        window.open('https://github.com/betamax2021/Muximux2', '_blank');
     });
 	$(".appsColor").spectrum({
 		showInput: true,

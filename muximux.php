@@ -654,7 +654,7 @@ function fetchBranches($skip) {
         } else {
             write_log('Refreshing branches from github - manually triggered.');
         }
-        $url = 'https://api.github.com/repos/mescon/Muximux/branches';
+        $url = 'https://api.github.com/repos/betamax2021/Muximux2/branches';
             $options = array(
           'http'=>array(
             'method'=>"GET",
@@ -768,7 +768,7 @@ function metaTags() {
     $authentication = ($config->getBool('general', 'authentication', false) ? 'true' : 'false');
     $autohide = ($config->getBool('general', 'autohide', false) ? 'true' : 'false');
     $branch = $config->get('general', 'branch', 'master');
-    $branchUrl = "https://api.github.com/repos/mescon/Muximux/commits?sha=" . $branch;
+    $branchUrl = "https://api.github.com/repos/betamax2021/Muximux2/commits?sha=" . $branch;
     $popupdate = ($config->getBool('general', 'updatepopup', false) ? 'true' : 'false');
     $enabledropdown = ($config->getBool('settings', 'enabledropdown', true) ? 'true' : 'false');
     $maintitle = $config->get('general', 'title', 'Muximux');
@@ -1025,7 +1025,7 @@ function downloadUpdate($sha) {
 	} else {
 		$result = false;
 		$zipFile = "Muximux-".$sha. ".zip";
-		$f = file_put_contents($zipFile, fopen("https://github.com/mescon/Muximux/archive/". $sha .".zip", 'r'), LOCK_EX);
+		$f = file_put_contents($zipFile, fopen("https://github.com/betamax2021/Muximux2/archive/". $sha .".zip", 'r'), LOCK_EX);
 		if(FALSE === $f) {
 			$result = 'Install Failed!  An error occurred saving the update.  Please check directory permissions and try again.';
 		} else {
