@@ -177,17 +177,19 @@ input[type='button']:hover {
 .splashNavBtn {
 	background: #5c5d5c;
 	border-color: rgba(41, 71, 41, 0.83);
-}   
+}
 
 .splashNavBtn:hover {
 	background: #31ac63;;
 }
+
 .well {
 	background-color: #41434f;
 	border: 1px solid rgba(71, 41, 41, 0.83);
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-	
+  padding: 0;
+
 }
 
 .well:hover {
@@ -199,7 +201,7 @@ input[type='button']:hover {
     background: -webkit-linear-gradient(-45deg, #777b82 0%,#343843 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(135deg, #777b82 0%,#343843 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#777b82', endColorstr='#343843',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	
+
 }
 
 .applicationContainer {
@@ -228,4 +230,14 @@ input[type='button']:hover {
 form input {
     background-color: #fff;
     color: #000;
+}
+
+h2 {
+    margin-top: 0px;
+}
+
+.btn-save {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
 }

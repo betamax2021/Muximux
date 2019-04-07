@@ -89,24 +89,24 @@ p {
 }
 
 @media only screen and (max-width: 767px) {
-	
+
 	.form-control {
 		text-align: center;
 	}
-	
+
 	.caret, .sp-dd {
 		display: none;
 	}
-	
+
 	select {
 		text-align: center;
 		text-align-last: center;
 	}
-	
+
 	.sp-preview {
 		width: 99%!important;
 	}
-	
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -138,7 +138,7 @@ p {
 		height: 75%;
 		overflow: auto;
 		border-radius: 10px;
-    
+
 }
 @media only screen and (min-width: 2560px) {
 	.hidden-xl-up {
@@ -496,7 +496,7 @@ input[type='button'] {
 	width: 100%;
 	height: 100%;
 	margin: auto;
-	padding: 30px 10px 10px 10px;
+	padding: 0 0 0 0;
 	text-align: center;
 	font-size: 16px;
 	font-size: 1.6rem;
@@ -537,19 +537,19 @@ input[type='button'] {
 		padding: 0px;
 		position: absolute;
 	}
-	
+
 	.feedWrapper {
 		padding: 0px;
 		height: 40px;
-		
+
 	}
-	
+
 	.TickerNews {
 		width: 100%;
 		height: 50px;
 		line-height: 48px;
 	}
-	
+
 	.ti_wrapper {
 		width: 100%;
 		float: left;
@@ -557,35 +557,35 @@ input[type='button'] {
 		position: relative;
 		overflow: hidden;
 	}
-	
+
 	.ti_slide{
 		width: 100%;
 		position: relative;
 		left: 0;
 		top: 0;
 	}
-	
+
 	.ti_content{
 		width: 8000px;
 		position: relative;
 		float:left;
 		height: 40px;
-		
+
 	}
-		
+
 	.splashHeader .logo {
 		display: none;
 	}
-	
+
 	#splashContainer {
 		padding: 42px 10px 30px 10px;
 	}
-	
+
 	.TickerNews {
 		width: 70%;
-		
+
 	}
-	
+
 	#splashNav {
 		position: relative;
 		display: inline-block;
@@ -594,7 +594,7 @@ input[type='button'] {
 		bottom: 40px;
 		float: right;
 	}
-		
+
 	.btn-lg {
 		padding: 6px 12px !important;
 	}
@@ -637,6 +637,7 @@ input[type='button'] {
 .well {
 	cursor: pointer;
 	margin: 5px;
+  padding: 0;
 }
 
 #splashBg {
