@@ -12,253 +12,249 @@ var n = 15;
 var differenceDays;
 var json;
 
-//unused function
-//function checkScrolling(tabs) {
-//    var totalTabWidth = parseInt(tabs.children('.cd-tabs-navigation').width()),
-//        tabsViewport = parseInt(tabs.width());
-//    if (tabs.scrollLeft() >= totalTabWidth - tabsViewport) {
-//        tabs.parent('.cd-tabs').addClass('is-ended');
-//    } else {
-//        tabs.parent('.cd-tabs').removeClass('is-ended');
-//    }
-//}
+function checkScrolling(tabs) {
+    var totalTabWidth = parseInt(tabs.children('.cd-tabs-navigation').width()),
+        tabsViewport = parseInt(tabs.width());
+    if (tabs.scrollLeft() >= totalTabWidth - tabsViewport) {
+        tabs.parent('.cd-tabs').addClass('is-ended');
+    } else {
+        tabs.parent('.cd-tabs').removeClass('is-ended');
+    }
+}
 
-//another unused function...
-// Measure viewport and subtract the height the navigation tabs, then resize the iframes.
-// drawer is just a boolean value as to whether or not we have the drawer.
-// If we do, then we need to make the iframe taller than bar height.
-//function resizeIframe(drawer, isMobile) {
-//    if (drawer && !isMobile) {
-//        var newSize = $(window).height() - 5;
-//        $('iframe').css({
-//            'height': newSize + 'px'
-//        });
-//    } else {
-//        var newSize = $(window).height() - $('.cd-tabs-navigation').height();
-//        $('iframe').css({
-//            'height': newSize + 'px'
-//        });
-//    }
-//}
+function resizeIframe(drawer, isMobile) {
+    if (drawer && !isMobile) {
+        var newSize = $(window).height() - 5;
+        $('iframe').css({
+            'height': newSize + 'px'
+        });
+    } else {
+        var newSize = $(window).height() - $('.cd-tabs-navigation').height();
+        $('iframe').css({
+            'height': newSize + 'px'
+        });
+    }
+}
+
 // From https://css-tricks.com/snippets/javascript/htmlentities-for-javascript/ - don't render tags retrieved from Github
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-//unused
-//function dropDownFixPosition(button, dropdown) {
-//    var dropDownTop = button.offset().top + button.outerHeight();
-//    dropdown.css('top', dropDownTop + "px");
-//    dropdown.css('left', $(window).width() - $('.drop-nav').width() - button.offset().left + "px");
-//}
+function dropDownFixPosition(button, dropdown) {
+    var dropDownTop = button.offset().top + button.outerHeight();
+    dropdown.css('top', dropDownTop + "px");
+    dropdown.css('left', $(window).width() - $('.drop-nav').width() - button.offset().left + "px");
+}
 
-//function settingsEventHandlers() {
-//    $('#sortable').sortable();
-//    // Anytime a radio box for default is changed it unchecks the others
-//    $('input[type=radio]').change(function() {
-//        $('input[type=radio]:checked').not(this).prop('checked', false);
-//    });
-//    // Event Handler for show/hide instructions
-//    $('#showInstructions').click(function() {
-//        $('#instructionsContainer').slideToggle(1000);
-//        if ($(this).html() == "<span class=\"fa fa-book\"></span> Show Guide") $(this).html('<span class=\"fa fa-book\"></span> Hide Guide');
-//        else $(this).html('<span class=\"fa fa-book\"></span> Show Guide');
-//    });
-//    // Event Handler for show/hide changelog
-//    $('#showChangelog').click(function() {
-//        $('#changelogContainer').slideToggle(1000);
-//        if ($(this).html() == "<span class=\"fa fa-github\"></span> Show Updates") {
-//            $(this).html('<span class=\"fa fa-github\"></span> Hide Updates');
-//            viewChangelog();
-//        }
-//        else $(this).html('<span class=\"fa fa-github\"></span> Show Updates');
-//    });
-//    // Event Handler for backup.ini show/hide button
-//    if ($('#backupContents').text() != "") {
-//        $('#topButtons').append('<a class="btn btn-primary" id="showBackup"><span class=\"fa fa-book\"></span> Show Backup INI</a>')
-//        $('#topButtons').css('width', '425px')
-//        $('#showBackup').click(function() {
-//            $('#backupiniContainer').slideToggle(1000);
-//            if ($(this).html() == "<span class=\"fa fa-book\"></span> Show Backup INI") $(this).html('<span class=\"fa fa-book\"></span> Hide Backup INI');
-//            else $(this).html('<span class=\"fa fa-book\"></span> Show Backup INI');
-//        });
-//    }
-//    // Remove all event handler
-//    $('#removeAll').click(function() {
-//        if (confirm('Are you sure?')) {
-//            var selectedEffect = "drop";
-//            var options = {};
-//            var time = 150;
-//            $(this).parents('form').children('#sortable').children().reverse().each(function() {
-//                var that = $(this);
-//                setTimeout(function() {
-//                    that.effect(selectedEffect, options, 150, removeCallback(that))
-//                }, time);
-//                time = time + 150;
-//            });
-//            $('#addApplication').click();
-//        }
-//    });
-//    // Remove sortable item button handler
-//    $('form').on('click', '.removeButton', function() {
-//        if (confirm('Are you sure?')) {
-//            var selectedEffect = "drop";
-//            var options = {};
-//            var remID = $(this).attr("id").split('-');
-//            $($(this).parents('.applicationContainer')).effect(selectedEffect, options, 500, removeCallback($(this).parents('.applicationContainer')));
-//            write_log('Removed application named ' + remID[1]);
-//        }
-//    });
-//    $('#removeBackup').click(function() {
-//        var secret = $("#secret").data()['data'];
-//        $.ajax({
-//            async: true,
-//            url: "muximux.php",
-//            type: 'GET',
-//            data: {
-//                remove: "backup",
-//                secret: secret
-//            },
-//            success: function(data) {
-//                if (data == "deleted");
-//                $('#backupiniContainer').toggle(1000);
-//                $('#showBackup').remove();
-//                $('#topButtons').css('width', '280px')
-//            }
-//        });
-//    });
-//
-//    function removeCallback(selectedElement) {
-//        setTimeout(function() {
-//            $(selectedElement).remove();
-//        }, 1000);
-//    };
-//    // Fix for iconpicker. For some reason the arrow doesn't get disabled when it hits the minimum/maximum page number. This disables the button, so that it doesnt go into the negatives or pages above its max.
-//    $('body').on('click', '.btn-arrow', function(event) {
-//        event.preventDefault();
-//        if ($(this).hasClass('disabled')) $(this).attr('disabled', 'disabled');
-//        else $('.btn-arrow').removeAttr('disabled');
-//    });
-//    // Add new application button handler
-//    $('#addApplication').click(function() {
-//        // Generating a random number here. So that if the user adds more than one new application at a time the ids/classes and names don't match.
-//        var rand = Math.floor((Math.random() * 999999) + 1);
-//        $('#sortable').append(
-//		'<div class="applicationContainer newApp" id="' + rand + 'newApplication">' +
-//			'<span class="bars fa fa-bars"></span>' +
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_name" class="col-xs-4 control-label right-label">Name: </label>' +
-//				'<div class="col-xs-7 col-md-8">' +
-//					'<input class="form-control form-control-sm appName ' + rand + 'newApplication_-_value" name="' + rand + 'newApplication_-_name" type="text" value="">' + 
-//				'</div>' +
-//			'</div>' + 
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_value" class="col-xs-4 control-label right-label">URL: </label>' +
-//				'<div class="col-xs-7 col-md-8">' +
-//					'<input class="form-control form-control-sm ' + rand + 'newApplication_-_value" name="' + rand + 'newApplication_-_url" type="text" value="">' + 
-//				'</div>' +
-//			'</div><br>' + 
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_icon" class="col-xs-4 control-label right-label">Icon: </label>' +
-//				'<div class="col-xs-7 col-md-5">' +
-//					'<button role="iconpicker" class="form-control form-control-sm iconpicker btn btn-default ' + rand + 'newApplication_-_icon" name="' + rand + 'newApplication_-_icon" id="' + rand + 'newApplication_-_iconPicker" data-rows="4" data-cols="6" data-search="true" data-search-text="Search..." data-iconset="muximux" data-placement="left">' + 
-//				'</div>' +
-//			'</div>' + 
-//			'<div class="appdiv form-group colorDiv">' +
-//				'<label for="' + rand + 'newApplication_-_color" class="col-xs-4 col-md-5 control-label color-label">Color: </label>' +
-//				'<div class="col-xs-7">' +
-//					'<input type="text" id="' + rand + 'newApplication_-_color" class="form-control form-control-sm appsColor ' + rand + 'newApplication_-_color" name="' + rand + 'newApplication_-_color" style="display:none;" value="">' + 
-//				'</div>' +
-//			'</div>' +
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_enabled" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Enabled: ' +
-//					'<input type="checkbox" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_enabled" name="' + rand + 'newApplication_-_enabled" checked>' + 
-//				'</label>' +
-//			'</div>' +
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_enabled" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Landing: ' +
-//					'<input type="checkbox" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_landingpage" name="' + rand + 'newApplication_-_landingpage">' + 
-//				'</label>' +
-//			'</div>' +
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_dd" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Dropdown: ' +
-//					'<input type="checkbox" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_dd" name="' + rand + 'newApplication_-_dd">' + 
-//				'</label>' +
-//			'</div>' +
-//			'<div class="appdiv form-group">' +
-//				'<label for="' + rand + 'newApplication_-_default" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Default: ' +
-//					'<input type="radio" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_default" name="' + rand + 'newApplication_-_default">' + 
-//				'</label>' +
-//			'</div>' + 
-//
-//			'<button type="button" class="form-control form-control-sm removeButton btn btn-danger btn-xs" value="Remove" id="remove_-_' + rand + 'newApplication">Remove<meta class="newAppRand" value="' + rand + '"></button>' +
-//			'<meta class="newAppRand" value="' + rand + '">' +
-//		'</div>');
-//        initIconPicker('#' + rand + 'newApplication_-_iconPicker');
-//		$('.' + rand + 'newApplication_-_color').spectrum({
-//		showInput: true,
-//		showPalette: true,
-//		preferredFormat: "hex",
-//		palette: [
-//        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
-//        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
-//        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
-//        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
-//        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
-//        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
-//        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
-//        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
-//    ]
-//	});
-//		$('.sp-replacer').addClass(' form-control');
-//		$('.sp-replacer').addClass('form-control-sm');
-//    });
-//    // App Name Change/Addition handler
-//    $('form').on('focusout', '.appName', function() {
-//        if ($(this).val() != "") {
-//            $(this).parents('.applicationContainer').removeClass('newApp');
-//            var section = $(this).attr('was');
-//            if (section == undefined) {
-//                section = $(this).parents('.applicationContainer').children('.newAppRand').attr('value') + "newApplication";
-//                $(this).parents('applicationContainer').children('.newAppRand').remove();
-//            }
-//            var newSection = $(this).val().split(' ').join('_');
-//            $(this).attr('was', newSection);
-//            $('.' + section + '-value').each(function() {
-//                var split = $(this).attr('name').split('-');
-//                $(this).removeAttr('name').prop('name', newSection + "-" + split[1]).addClass(newSection + '-value').removeClass(section + '-value');
-//            });
-//            $('input[name="' + section + '-icon"]').prop('name', newSection + "-icon");
-//            $(this).parents('div.applicationContainer').attr('id', newSection);
-//        }
-//    });
-//    //On Submit handler
-//    var options = {
-//        url: 'muximux.php',
-//        type: 'post',
-//        success: showResponse
-//    };
-//    $('#settingsSubmit').click(function(event) {
-//        event.preventDefault();
-//        $('.newApp').remove(); //Remove any new app that isn't filled out.
-//        $('.checkbox,.radio').each(function() {
-//            if (!$(this).prop('checked')) {
-//                var name = $(this).attr('name');
-//                $('<input type="hidden" name="' + name + '" value="false">').appendTo($(this));
-//            }
-//        });
-//        $('.appName').removeAttr('disabled');
-//        $("form").ajaxSubmit(options);
-//    });
-//    $('#tabcolorCheckbox').click(function(event) {
-//        if ($(this).prop('checked')) {
-//            $('.colorDiv').slideDown('fast');    
-//        } else {
-//            $('.colorDiv').slideUp('fast');     
-//        }
-//
-//    });
-//}
+function settingsEventHandlers() {
+    $('#sortable').sortable();
+    // Anytime a radio box for default is changed it unchecks the others
+    $('input[type=radio]').change(function() {
+        $('input[type=radio]:checked').not(this).prop('checked', false);
+    });
+    // Event Handler for show/hide instructions
+    $('#showInstructions').click(function() {
+        $('#instructionsContainer').slideToggle(1000);
+        if ($(this).html() == "<span class=\"fa fa-book\"></span> Show Guide") $(this).html('<span class=\"fa fa-book\"></span> Hide Guide');
+        else $(this).html('<span class=\"fa fa-book\"></span> Show Guide');
+    });
+    // Event Handler for show/hide changelog
+    $('#showChangelog').click(function() {
+        $('#changelogContainer').slideToggle(1000);
+        if ($(this).html() == "<span class=\"fa fa-github\"></span> Show Updates") {
+            $(this).html('<span class=\"fa fa-github\"></span> Hide Updates');
+            viewChangelog();
+        }
+        else $(this).html('<span class=\"fa fa-github\"></span> Show Updates');
+    });
+    // Event Handler for backup.ini show/hide button
+    if ($('#backupContents').text() != "") {
+        $('#topButtons').append('<a class="btn btn-primary" id="showBackup"><span class=\"fa fa-book\"></span> Show Backup INI</a>')
+        $('#topButtons').css('width', '425px')
+        $('#showBackup').click(function() {
+            $('#backupiniContainer').slideToggle(1000);
+            if ($(this).html() == "<span class=\"fa fa-book\"></span> Show Backup INI") $(this).html('<span class=\"fa fa-book\"></span> Hide Backup INI');
+            else $(this).html('<span class=\"fa fa-book\"></span> Show Backup INI');
+        });
+    }
+    // Remove all event handler
+    $('#removeAll').click(function() {
+        if (confirm('Are you sure?')) {
+            var selectedEffect = "drop";
+            var options = {};
+            var time = 150;
+            $(this).parents('form').children('#sortable').children().reverse().each(function() {
+                var that = $(this);
+                setTimeout(function() {
+                    that.effect(selectedEffect, options, 150, removeCallback(that))
+                }, time);
+                time = time + 150;
+            });
+            $('#addApplication').click();
+        }
+    });
+    // Remove sortable item button handler
+    $('form').on('click', '.removeButton', function() {
+        if (confirm('Are you sure?')) {
+            var selectedEffect = "drop";
+            var options = {};
+            var remID = $(this).attr("id").split('-');
+            $($(this).parents('.applicationContainer')).effect(selectedEffect, options, 500, removeCallback($(this).parents('.applicationContainer')));
+            write_log('Removed application named ' + remID[1]);
+        }
+    });
+    $('#removeBackup').click(function() {
+        var secret = $("#secret").data()['data'];
+        $.ajax({
+            async: true,
+            url: "muximux.php",
+            type: 'GET',
+            data: {
+                remove: "backup",
+                secret: secret
+            },
+            success: function(data) {
+                if (data == "deleted");
+                $('#backupiniContainer').toggle(1000);
+                $('#showBackup').remove();
+                $('#topButtons').css('width', '280px')
+            }
+        });
+    });
+
+    function removeCallback(selectedElement) {
+        setTimeout(function() {
+            $(selectedElement).remove();
+        }, 1000);
+    };
+    // Fix for iconpicker. For some reason the arrow doesn't get disabled when it hits the minimum/maximum page number. This disables the button, so that it doesnt go into the negatives or pages above its max.
+    $('body').on('click', '.btn-arrow', function(event) {
+        event.preventDefault();
+        if ($(this).hasClass('disabled')) $(this).attr('disabled', 'disabled');
+        else $('.btn-arrow').removeAttr('disabled');
+    });
+    // Add new application button handler
+    $('#addApplication').click(function() {
+        // Generating a random number here. So that if the user adds more than one new application at a time the ids/classes and names don't match.
+        var rand = Math.floor((Math.random() * 999999) + 1);
+        $('#sortable').append(
+		'<div class="applicationContainer newApp" id="' + rand + 'newApplication">' +
+			'<span class="bars fa fa-bars"></span>' +
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_name" class="col-xs-4 control-label right-label">Name: </label>' +
+				'<div class="col-xs-7 col-md-8">' +
+					'<input class="form-control form-control-sm appName ' + rand + 'newApplication_-_value" name="' + rand + 'newApplication_-_name" type="text" value="">' + 
+				'</div>' +
+			'</div>' + 
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_value" class="col-xs-4 control-label right-label">URL: </label>' +
+				'<div class="col-xs-7 col-md-8">' +
+					'<input class="form-control form-control-sm ' + rand + 'newApplication_-_value" name="' + rand + 'newApplication_-_url" type="text" value="">' + 
+				'</div>' +
+			'</div><br>' + 
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_icon" class="col-xs-4 control-label right-label">Icon: </label>' +
+				'<div class="col-xs-7 col-md-5">' +
+					'<button role="iconpicker" class="form-control form-control-sm iconpicker btn btn-default ' + rand + 'newApplication_-_icon" name="' + rand + 'newApplication_-_icon" id="' + rand + 'newApplication_-_iconPicker" data-rows="4" data-cols="6" data-search="true" data-search-text="Search..." data-iconset="muximux" data-placement="left">' + 
+				'</div>' +
+			'</div>' + 
+			'<div class="appdiv form-group colorDiv">' +
+				'<label for="' + rand + 'newApplication_-_color" class="col-xs-4 col-md-5 control-label color-label">Color: </label>' +
+				'<div class="col-xs-7">' +
+					'<input type="text" id="' + rand + 'newApplication_-_color" class="form-control form-control-sm appsColor ' + rand + 'newApplication_-_color" name="' + rand + 'newApplication_-_color" style="display:none;" value="">' + 
+				'</div>' +
+			'</div>' +
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_enabled" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Enabled: ' +
+					'<input type="checkbox" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_enabled" name="' + rand + 'newApplication_-_enabled" checked>' + 
+				'</label>' +
+			'</div>' +
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_enabled" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Landing: ' +
+					'<input type="checkbox" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_landingpage" name="' + rand + 'newApplication_-_landingpage">' + 
+				'</label>' +
+			'</div>' +
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_dd" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Dropdown: ' +
+					'<input type="checkbox" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_dd" name="' + rand + 'newApplication_-_dd">' + 
+				'</label>' +
+			'</div>' +
+			'<div class="appdiv form-group">' +
+				'<label for="' + rand + 'newApplication_-_default" class="col-xs-6 col-md-12 control-label col-form-label form-check-inline">Default: ' +
+					'<input type="radio" class="form-check-input form-control ' + rand + 'newApplication_-_value" id="' + rand + 'newApplication_-_default" name="' + rand + 'newApplication_-_default">' + 
+				'</label>' +
+			'</div>' + 
+
+			'<button type="button" class="form-control form-control-sm removeButton btn btn-danger btn-xs" value="Remove" id="remove_-_' + rand + 'newApplication">Remove<meta class="newAppRand" value="' + rand + '"></button>' +
+			'<meta class="newAppRand" value="' + rand + '">' +
+		'</div>');
+        initIconPicker('#' + rand + 'newApplication_-_iconPicker');
+		$('.' + rand + 'newApplication_-_color').spectrum({
+		showInput: true,
+		showPalette: true,
+		preferredFormat: "hex",
+		palette: [
+        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+    ]
+	});
+		$('.sp-replacer').addClass(' form-control');
+		$('.sp-replacer').addClass('form-control-sm');
+    });
+    // App Name Change/Addition handler
+    $('form').on('focusout', '.appName', function() {
+        if ($(this).val() != "") {
+            $(this).parents('.applicationContainer').removeClass('newApp');
+            var section = $(this).attr('was');
+            if (section == undefined) {
+                section = $(this).parents('.applicationContainer').children('.newAppRand').attr('value') + "newApplication";
+                $(this).parents('applicationContainer').children('.newAppRand').remove();
+            }
+            var newSection = $(this).val().split(' ').join('_');
+            $(this).attr('was', newSection);
+            $('.' + section + '-value').each(function() {
+                var split = $(this).attr('name').split('-');
+                $(this).removeAttr('name').prop('name', newSection + "-" + split[1]).addClass(newSection + '-value').removeClass(section + '-value');
+            });
+            $('input[name="' + section + '-icon"]').prop('name', newSection + "-icon");
+            $(this).parents('div.applicationContainer').attr('id', newSection);
+        }
+    });
+    //On Submit handler
+    var options = {
+        url: 'muximux.php',
+        type: 'post',
+        success: showResponse
+    };
+    $('#settingsSubmit').click(function(event) {
+        event.preventDefault();
+        $('.newApp').remove(); //Remove any new app that isn't filled out.
+        $('.checkbox,.radio').each(function() {
+            if (!$(this).prop('checked')) {
+                var name = $(this).attr('name');
+                $('<input type="hidden" name="' + name + '" value="false">').appendTo($(this));
+            }
+        });
+        $('.appName').removeAttr('disabled');
+        $("form").ajaxSubmit(options);
+    });
+    $('#tabcolorCheckbox').click(function(event) {
+        if ($(this).prop('checked')) {
+            $('.colorDiv').slideDown('fast');    
+        } else {
+            $('.colorDiv').slideUp('fast');     
+        }
+
+    });
+}
+
 // Takes all the data we have to generate our changelog
 function viewChangelog() {
     $('#changelog').html("");
@@ -355,11 +351,13 @@ function initIconPicker(selectedItem) {
         unselectedClass: ''
     });
 }
+
 // post-submit callback function
 function showResponse(responseText, statusText) {
     if (responseText == 1 || statusText == "success") location.pathname = location.pathname;
     else alert("Error!!!-" + responseText);
 }
+
 // Calculates the amount of days since an update was commited on Github.
 function datediff(latestDate) {
     var githubDate_ms = new Date(latestDate).getTime();
@@ -583,36 +581,6 @@ function getsupportedprop(proparray) {
             return proparray[i] //return that string
         }
     }
-}
-
-
-// Shhh, we just won't mention this is here for now
-function setupFeed(url, isMobile) {
-	$('#feed').rssfeed(url, {
-		ssl: true,
-		limit: 20,
-		showerror: true,
-		errormsg: '',
-		tags: true,
-		date: true,
-		dateformat: 'spellmonth',
-		titletag: 'h4',
-		content: (isMobile ? false : true),
-		image: (isMobile ? false : true),
-		snippet: true,
-		snippetlimit: 120,
-		linktarget: '_blank'
-	}, function () {
-		isMobile = ($(window).width() < 800);
-		if (isMobile) {
-			setupMobileTicker();
-		} else {
-			$('#webTicker').removeAttr('style');
-			$('.ti_wrapper').removeAttr('style');
-		}
-			
-	});
-	
 }
 
 // Convert the classes created by our RSS plugin to be usable by the ticker plugin

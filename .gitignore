@@ -20,7 +20,7 @@ plexredirect/
 recent/
 keeweb/
 api/
-cache/
+cache/*
 test/
 #all my random ass mac-made files
 _*/
