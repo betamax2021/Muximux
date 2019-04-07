@@ -1,19 +1,15 @@
-# Muximux2 - Lightweight portal to your webapps Under new Managment ;)
+# Muximux2 - Lightweight portal to your webapps
 
 [![GitHub stars](https://img.shields.io/github/stars/betamax2021/Muximux2.svg)](https://github.com/betamax2021/Muximux2/stargazers) [![GitHub forks](https://img.shields.io/github/forks/betamax2021/Muximux2.svg)](https://github.com/betamax2021/Muximux2/network)
 
 This is a lightweight portal to view & manage your webapps without having to run anything more than a PHP enabled webserver.
 With Muximux you don't need to keep multiple tabs open, or bookmark the URL to all of your apps.
 
-![Desktop screenshot](https://i.imgur.com/LLsHzxX.png)
-[More screenshots](#screenshots)
-
 ## Major features
 * Add, remove and rearrange your owns apps without touching any code - it's all in the settings menu!
 * A shiny new dropdown menu (top right) where you can put items you don't use that often!
 * Change or replace icons by just clicking the icon you think looks good.
 * Enable or disable a landingpage for each app (landingpages prevent you from being bombarded with login-prompts, and reduces load on your browser).
-* All menu items move to the dropdown when you access Muximux from your mobile phone or tablet!
 * Refresh button - when you click it, only the app you are looking at will be reloaded - not EVERY app inside your browser. You can also double click the item in the menu.
 
 ### Behind the scenes features
@@ -37,12 +33,6 @@ With Muximux you don't need to keep multiple tabs open, or bookmark the URL to a
 
 - Make sure that the directory where you place Muximux is [writable by the process that is running your webserver](http://lmgtfy.com/?q=how+to+make+a+directory+writable+by+my+webserver). *(i.e www-data, www-user, apache, nginx or whatever the user is called)*
   - Example: ``chown -R www-data.www-data /var/www/muximux``
-
-
-## Docker Setup
-
-The fine people of [LinuxServer.io](https://www.linuxserver.io) takes care of Docker builds for Muximux.
-You can find [their instructions here](https://hub.docker.com/r/linuxserver/muximux/).
 
 
 ## Usage
@@ -86,27 +76,8 @@ Browser HTTP_REFERER enforcement - Disable HTTP_REFERER enforcement check
 Now pfsense works in muximux :D
 (Thanks to nullredvector for the tip)
 
-## Screenshots
-#### Desktop screenshot (modern theme)
-![Desktop screenshot, modern theme](https://i.imgur.com/LLsHzxX.png)
-
-#### Desktop screenshot (classic theme)
-![Desktop screenshot, classic theme](https://i.imgur.com/MeMfrI4.png)
-
-#### Splash screen (modern theme) - shown on startup, accessible in the top right corner if you close it
-![Splash screen](https://i.imgur.com/q6gw45q.png)
-
-#### Mobile screenshot (modern theme) - dropdown menu hidden
-![Mobile screenshot - dropdown menu hidden](https://i.imgur.com/smua7bw.png)
-
-#### Mobile screenshot (modern theme) - dropdown menu shown
-![Mobile screenshot - dropdown menu shown](https://i.imgur.com/8cDGN7A.png)
-
-#### Settings: Drag & Drop items to re-arrange them in your menu
-![Drag & Drop items to re-arrange them in your menu](https://i.imgur.com/7m0k6qB.png)
-
-#### Settings: Pick and choose from over 2600 icons and choose colors for each tab
-![Pick and choose from over 500 icons](https://i.imgur.com/NyUmzX7.png)
+>Original Project:
+> https://github.com/mescon/Muximux
 
 > This is a PHP enabled fork of (the simpler and more lightweight) "Managethis" found here:
 > https://github.com/Tenzinn3/Managethis
