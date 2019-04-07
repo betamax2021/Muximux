@@ -117,7 +117,7 @@ function write_ini()
 // Parse settings.php and create the Muximux elements
 function parse_ini()
 {
-	mapIcons('css/font-muximux.css','.muximux-');
+	mapIcons('css/font-muximux.css','.icon-');
     $config = new Config_Lite(CONFIG);
 	checksetSHA();
     fetchBranches(false);
@@ -250,8 +250,8 @@ function parse_ini()
             $name = $config->get($section, 'name', '');
             $url = $config->get($section, 'url', 'http://www.plex.com');
             $color = $config->get($section, 'color', '#000');
-            $icon = $config->get($section, 'icon', 'muximux-play');
-	    $icon = str_replace('fa-','muximux-',$icon);
+            $icon = $config->get($section, 'icon', 'icon-play');
+	    $icon = str_replace('fa-','icon-',$icon);
 	    $scale = $config->get($section, 'scale', '1');
             $default = $config->getBool($section, 'default', false);
             $enabled = $config->getBool($section, 'enabled', true);
@@ -349,7 +349,7 @@ function splashScreen() {
 	if (($keyname != "general") && ($keyname != "settings") && $enabled) {
     	$color = ($tabColor===true ? $section["color"] : $themeColor);
 	$icon = $config->get($keyname,'icon','fa-play');
-	$icon = str_replace('fa-','muximux-',$icon);
+	$icon = str_replace('fa-','icon-',$icon);
 			
 			$splash .= "
 									<div class='btnWrap'>
@@ -529,7 +529,7 @@ function menuItems() {
             $url = $config->get($keyname, 'url', 'http://www.plex.com');
             $color = $config->get($keyname, 'color', '#000');
             $icon = $config->get($keyname, 'icon', 'fa-play');
-	    $icon = str_replace('fa-','muximux-',$icon);
+	    $icon = str_replace('fa-','icon-',$icon);
 	    $scale = $config->get($keyname, 'scale', '1');
             $default = $config->getBool($keyname, 'default', false);
             $enabled = $config->getBool($keyname, 'enabled', false);
@@ -564,25 +564,20 @@ function menuItems() {
     
     $moButton = "
 			<ul class='main-nav'>
-                <li class='navbtn ".(($mobileoverride == "true") ? '' : 'hidden')."'>
-                    <a id='override' title='Click this button to disable mobile scaling on tablets or other large-resolution devices.'>
-                        <span class='fa muximux-mobile fa-lg'></span>
-                    </a>
-                </li>
                 <li class='navbtn ".(($splashScreen == "true") ? '' : 'hidden')."'>
 			<a id='showSplash' data-toggle='modal' data-target='#splashModal' data-title='Show Splash'>
-                	<span class='fa muximux-home4 fa-lg'></span>
+                	<span class='fa icon-home4 fa-lg'></span>
                     </a>
                 </li>
     
                 <li class='navbtn ".(($authentication == "true") ? '' : 'hidden')."'>
                     <a id='logout' title='Click this button to log out of Muximux.'>
-                        <span class='fa muximux-sign-out fa-lg'></span>
+                        <span class='fa icon-sign-out fa-lg'></span>
                     </a>
                 </li>
 				<li class='navbtn'>
                     <a id='reload' title='Double click your app in the menu, or press this button to refresh the current app.'>
-                        <span class='fa muximux-refresh fa-lg'></span>
+                        <span class='fa icon-refresh fa-lg'></span>
                     </a>
                 </li>
 				
@@ -1163,7 +1158,7 @@ function mapIcons($file,$classSelector){
 			}
 		}
 		$result = substr_replace($result ,"",-2);
-		$result = '!function($){$.iconset_muximux={iconClass:"muximux",iconClassFix:"muximux-",icons:['.$result.']}}(jQuery);';
+		$result = '!function($){$.iconset_muximux={iconClass:"icon",iconClassFix:"icon-",icons:['.$result.']}}(jQuery);';
 		$file = openFile('js/iconset-muximux.js', "w");
 		fwrite($file, $result);
 		//$config->set('settings','hash_'.$fileName,$iconHash);
